@@ -20,7 +20,7 @@ def get_system_stats():
     return stats
 
 
-def get_network_stats(host='localhost'): #replace by 8.8.8.8
+def get_network_stats(host='8.8.8.8'):
     stats = {}
     latency = ping(host)
     if latency is not None:
@@ -37,24 +37,25 @@ def write_to_csv(file_name, data):
             writer.writeheader()
         writer.writerow(data)
 
+def main():
+    file_name = 'system_network_stats.csv'
+    interval = 4  # +1 seconds
+    duration = 60  # Total duration to run the script 
+    start_time = time.time()
 
-file_name = 'system_network_stats.csv'
-interval = 4  # +1 seconds
-duration = 60  # Total duration to run the script 
-start_time = time.time()
+    while True:
+        elapsed_time = time.time() - start_time
+        if elapsed_time > duration:
+            print("Finished collecting data.")
+            break
+        
+        system_stats = get_system_stats()
+        network_stats = get_network_stats()
 
-while True:
-    elapsed_time = time.time() - start_time
-    if elapsed_time > duration:
-        print("Finished collecting data.")
-        break
-    
-    system_stats = get_system_stats()
-    network_stats = get_network_stats()
+        stats = {**system_stats, **network_stats}
+        stats['timestamp'] = time.strftime('%Y-%m-%d %H:%M:%S')
+        
+        write_to_csv(file_name, stats)
+        time.sleep(interval)
 
-    stats = {**system_stats, **network_stats}
-    stats['timestamp'] = time.strftime('%Y-%m-%d %H:%M:%S')
-    
-    write_to_csv(file_name, stats)
-    time.sleep(interval)
-
+main()
