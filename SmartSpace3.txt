@@ -1,0 +1,25 @@
+The given problem can be solved by following some of the methods given below:
+
+1- We can only send selective data corresponding to a student's movement (i.e. significant change in facial expression, nodding head, etc.), rather than continuously sending in data. This helps us keep track of key moments, while also reducing resource utilisation.
+
+2- Dynamic sampling - Nodes can be configured in such a way that their sensors do not capture data very frequently if everything is going normally. If there's a detection of movements or changes in the student's behaviour, data can be captured more frequently to make a conclusion in terms of student's behaviour.
+
+3- We could focus more on important details and slightly less on extra stuff like background etc. Basically, we prioritise important and relevant data.
+
+4- Node sensors can be trained in such a way that they're able to detect how a student is going to behave. For eg- if the node is made to believe that the student is fully focused during a particular activity (let's say, an in-class assignment), or at a particular time of the day, it can make the sensor capture data less frequently. If during a class, student is prone to more distractions, the node sensors can be more active and capture data more frequently.
+
+5- Besides RR, we can also schedule the processes in such a way that the nodes which detects maximum activity can be given highest priority. This way, we capture data from redundant nodes less often and the "active" nodes stay more in the spotlight, constantly feeding us with necessary information.
+
+6- Time optimization, i.e. node sensors only capture data actively at a certain time of the day. For example, it isn't a great idea to continuously capture a student's attention in class during lunch-breaks, and thus we can capture data less frequently and save resources. Whereas, during afternoons when students start getting dizzy, data capture can become more intensive.
+
+7- Some nodes when clumped together would provide more information, rather than sending the information individually. So, we can make the nodes "summarise" the information and send it. This saves processing time and resources, while still having significant (or even more/accurate) information to work with.
+
+8- Continuously sending alerts to students could be overwhelming and also inaccurate, so we could program the model to only alert the student when a set amount of distraction (in terms of actions) is detected. For eg- a student could be wrongly labelled as distracted if he looks down to fetch his water-bottle, and we could avoid this by ignoring a set amount of distractive moments.
+
+9- Data can be sent to the server in discrete packets every set period of time. This helps reduce network traffic.
+
+10- Node collaboration/communication can help them picture things more accurately. A node which detects a movement can thus alert other nodes about it, and look for possible signs of distraction.
+
+11- When the node is low on power, it can switch to more-optimised data processing, where active nodes are the only ones given focus, and data is captured less frequently to keep the system up for longer.
+
+Besides this, several other methods (in theory) can be used to solve the given problem, depending on the difficulty of implementation.
