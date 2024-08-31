@@ -4,6 +4,10 @@ import time
 from dotenv import load_dotenv
 import os
 
+def clean_response(text):
+    text = text.strip()
+    return text
+
 load_dotenv()
 api_key = os.getenv('api_key')
 api_url = 'https://api.groq.com/openai/v1/chat/completions'
@@ -15,11 +19,6 @@ with open(input_file, 'r') as file:
     inputs = file.readlines()
 
 output = []
-
-def clean_response(text):
-    text = text.strip()
-    return text
-
 for i, text in enumerate(inputs):
     time_sent = int(time.time())
 
