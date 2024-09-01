@@ -23,9 +23,9 @@ for i, text in enumerate(inputs):
     time_sent = int(time.time())
 
     payload = {
-        'model': model,  #Include the model in the payload
+        'model': model, 
         'messages': [{'role': 'user', 'content': text.strip()}],
-        'max_tokens': 2048  #Customize as needed
+        'max_tokens': 2048 
     }
     response = requests.post(api_url, headers={'Authorization': f'Bearer {api_key}'}, json=payload)
     time_recvd = int(time.time())
